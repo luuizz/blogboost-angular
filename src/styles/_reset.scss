@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  color: var(--white);
+  font-family: var(--font-main);
+}
+
+body,
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--gray-scale-01);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
