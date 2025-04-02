@@ -1,0 +1,78 @@
+$breakpoints: (
+  "ultrawide": 2560px,
+  "desktop": 1920px,
+  "desktop-md": 1440px,
+  "desktop-xs": 1280px,
+  "laptop": 1150px,
+  "laptop-xs": 1050px,
+  "tablet": 991px,
+  "tablet-xl": 850px,
+  "tablet-md": 768px,
+  "mobile": 560px,
+  "mobileSm": 460px,
+);
+
+@mixin flex($flexDirection, $alignItems, $justifyContent) {
+  display: flex;
+  flex-direction: $flexDirection;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+
+@mixin responsive($breakpoints-name, $type: max) {
+  @if map-has-key($breakpoints, $breakpoints-name) {
+    @if $type == max {
+      @media (max-width: map-get($breakpoints, $breakpoints-name)) {
+        @content;
+      }
+    } @else if $type == min {
+      @media (min-width: map-get($breakpoints, $breakpoints-name)) {
+        @content;
+      }
+    } @else {
+      @warn "O tipo de breakpoint deve ser 'max' ou 'min'.";
+    }
+  } @else {
+    @warn "Breakpoint que você definiu não existe";
+  }
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-stratch {
+  display: flex;
+  align-items: stretch;
+}
+
+@mixin flex-start-between {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@mixin flex-total-center {
+  @include flex-center;
+  justify-content: center;
+}
+
+@mixin flexCenterJustify {
+  @include flex-center;
+  justify-content: space-between;
+}
+
+@mixin flexStratchJustify {
+  @include flex-stratch;
+  justify-content: space-between;
+}
+
+@mixin transition {
+  transition: all 0.3s ease;
+}
