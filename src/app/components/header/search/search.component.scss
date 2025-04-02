@@ -1,0 +1,42 @@
+@use "mixins" as *;
+
+::ng-deep app-search {
+  width: 100%;
+  max-width: 28rem;
+  .search {
+    height: 3.6rem;
+    @include flex-center;
+    input {
+      flex: 1;
+      height: 100%;
+      transition: border 0.3s ease;
+      border-radius: 0.4rem 0 0 0.4rem;
+      padding: 0 1.6rem;
+      color: var(--white);
+      border: 1px solid rgba(var(--gray-scale-alpha-05), 0.25);
+      background-color: transparent;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      &:focus,
+      &:focus-within {
+        border: 1px solid var(--pink);
+        outline: none;
+      }
+    }
+    button {
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 0.4rem;
+      background-color: var(--pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 0.3s ease, -webkit-filter 0.3s ease;
+      margin-left: -0.5rem;
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+}
