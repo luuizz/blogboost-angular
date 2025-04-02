@@ -1,0 +1,16 @@
+@use "mixins" as *;
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 12, 27, 0.5);
+  z-index: 2025;
+  padding: 2.4rem 0;
+  nav {
+    @include flexCenterJustify;
+    width: 100%;
+    max-width: 83.2rem;
+  }
+}
