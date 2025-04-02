@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-navigation',
-  imports: [CommonModule],
+  imports: [CommonModule, SearchComponent],
   standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
