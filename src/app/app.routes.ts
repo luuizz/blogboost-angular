@@ -8,14 +8,14 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
-  {
-    path: 'post/:slug',
-    component: PostComponent,
-  },
+  // {
+  //   path: 'post/:slug',
+  //   component: PostComponent,
+  // },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRountingModule {}
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule],
+// })
+// export class AppRountingModule {}
