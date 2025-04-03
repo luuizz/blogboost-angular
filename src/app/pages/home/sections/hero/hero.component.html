@@ -1,5 +1,42 @@
 <section>
   <app-grid>
-    <p>Hero</p>
+    <div class="left-container">
+      <div class="title">
+        <app-caption label="Tech Blog" />
+        <h2>Em destaque</h2>
+      </div>
+
+      <a href="#" class="card-post-lg">
+        <div class="image">
+          <img width="728" height="320" src="/img-feature.jpg" alt="Imagem destacada da postagem. Notebook aberto com uma apresentação abstrata">
+        </div>
+
+        <div class="info">
+          <div class="top-info">
+            <app-caption label="Tecnologia" />
+
+            <ul>
+              <li>
+                <img src="/icon-calendar.svg" alt="Ícone de um calendário">
+                <span>16, Fev</span>
+              </li>
+
+              <li>
+                <img src="/icon-clock.svg" alt="Ícone de um relógio">
+                <span>12min de leitura</span>
+              </li>
+            </ul>
+          </div>
+
+          <h3>Let your close friends know what you're up to as you move about your day.</h3>
+        </div>
+      </a>
+    </div>
+    <div class="right-container">
+      <h4>Mais populares</h4>
+      <div class="all">
+        <app-item-post *ngFor="let post of posts" [post]="post" />
+      </div>
+    </div>
   </app-grid>
 </section>
