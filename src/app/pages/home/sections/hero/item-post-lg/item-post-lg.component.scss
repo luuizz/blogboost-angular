@@ -1,0 +1,94 @@
+@use "mixins" as *;
+
+.card-post-lg {
+  width: 100%;
+  display: block;
+  max-width: 72.8rem;
+  &:hover {
+    .image {
+      img {
+        transform: scale(1.05);
+      }
+    }
+    h3 {
+      color: var(--pink);
+    }
+  }
+  .image {
+    width: 100%;
+    height: 32rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    }
+  }
+  .info {
+    .top-info {
+      @include flexCenterJustify;
+      margin-bottom: 1.6rem;
+      flex-direction: row;
+      ul {
+        @include flex-center;
+        gap: 4rem;
+        li {
+          position: relative;
+          display: flex;
+          &:not(:first-child) {
+            &::after {
+              content: "";
+              width: 0.6rem;
+              height: 0.6rem;
+              background-color: var(--gray-scale-03);
+              position: absolute;
+              border-radius: 50%;
+              left: -2.3rem;
+              top: 0.7rem;
+            }
+          }
+          span {
+            font-weight: 400;
+            font-size: 1.4rem;
+            line-height: 150%;
+            color: var(--gray-scale-05);
+            margin-left: 0.8rem;
+          }
+        }
+      }
+    }
+    h3 {
+      max-width: 95%;
+      -webkit-transition: color 0.3s ease;
+      transition: color 0.3s ease;
+    }
+  }
+  @include responsive("tablet-md") {
+    .info {
+      h3 {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  @include responsive("mobile") {
+    .image {
+      height: 20rem;
+      margin-bottom: 2rem;
+    }
+    .info {
+      .top-info {
+        justify-content: center;
+        ul {
+          display: none;
+        }
+      }
+      h3 {
+        font-size: 2.4rem;
+      }
+    }
+  }
+}
