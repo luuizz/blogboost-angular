@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { inject } from '@angular/core';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-post',

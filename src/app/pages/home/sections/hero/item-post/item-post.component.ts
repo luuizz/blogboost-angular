@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CaptionComponent } from '@components/caption/caption.component';
 import { CommonModule } from '@angular/common';
 import { Post } from '@shared/interfaces/post.interface';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-item-post',

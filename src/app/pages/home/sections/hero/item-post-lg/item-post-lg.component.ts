@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CaptionComponent } from '../../../../../components/caption/caption.component';
+import { CaptionComponent } from '@components/caption/caption.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-item-post-lg',
