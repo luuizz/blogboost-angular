@@ -4,11 +4,18 @@ import { CaptionComponent } from '@components/caption/caption.component';
 import { ItemPostComponent } from './item-post/item-post.component';
 import { CommonModule } from '@angular/common';
 import { Post } from '@shared/interfaces/post.interface';
+import { ItemPostLgComponent } from './item-post-lg/item-post-lg.component';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [GridComponent, CaptionComponent, ItemPostComponent, CommonModule],
+  imports: [
+    GridComponent,
+    CaptionComponent,
+    ItemPostComponent,
+    CommonModule,
+    ItemPostLgComponent,
+  ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })

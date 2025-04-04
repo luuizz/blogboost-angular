@@ -1,0 +1,79 @@
+@use "mixins" as *;
+
+::ng-deep app-hero {
+  .s-hero-post {
+    padding-top: 8.3rem;
+    padding-bottom: 11.7rem;
+    .container {
+      @include flex-start-between;
+      flex-direction: row;
+      .left-container {
+        flex: 1;
+        max-width: 72.8rem;
+        .title {
+          margin-bottom: 4.2rem;
+          h2 {
+            margin-top: 1.4rem;
+          }
+        }
+      }
+      .right-container {
+        margin-top: 4rem;
+        flex: 1;
+        max-width: 38.4rem;
+        .all {
+          margin-top: 4.2rem;
+        }
+      }
+    }
+  }
+  @include responsive("laptop") {
+    .s-hero-post {
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 35rem;
+        grid-gap: 3rem;
+      }
+    }
+  }
+  @include responsive("tablet-md") {
+    .s-hero-post {
+      .container {
+        grid-template-columns: 1fr;
+        grid-gap: 4rem;
+        .left-container {
+          .title {
+            @include flex-total-center;
+            flex-direction: column;
+            margin-bottom: 4rem;
+          }
+        }
+        .right-container {
+          max-width: 100%;
+          h4 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  @include responsive("mobile") {
+    .s-hero-post {
+      .container {
+        grid-gap: 0;
+        .left-container {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding-bottom: 4rem;
+          .title {
+            margin-bottom: 3rem;
+          }
+        }
+        .right-container {
+          .all {
+            margin-top: 3rem;
+          }
+        }
+      }
+    }
+  }
+}
