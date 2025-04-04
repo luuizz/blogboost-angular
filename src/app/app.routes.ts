@@ -1,7 +1,8 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, provideRouter } from '@angular/router';
 import { PostComponent } from './pages/post/post.component';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './pages/home/home.component';
+import { ApplicationConfig } from '@angular/core';
 
 export const routes: Routes = [
   {
@@ -14,8 +15,8 @@ export const routes: Routes = [
   // },
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule],
-// })
+// export const appConfig: ApplicationConfig = {
+//   providers: [provideRouter(routes)],
+// };
+
 // export class AppRountingModule {}
