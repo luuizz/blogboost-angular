@@ -22,6 +22,18 @@
       width: 100%;
       max-width: 38.4rem;
       height: 10.4rem;
+      &:hover {
+        .image {
+          img {
+            transform: scale(1.05);
+          }
+        }
+        .info {
+          h6 {
+            color: var(--pink);
+          }
+        }
+      }
       .image {
         width: 10.4rem;
         height: 10.4rem;
