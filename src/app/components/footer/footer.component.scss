@@ -1,0 +1,111 @@
+@use "mixins" as *;
+
+::ng-deep app-footer {
+  footer {
+    position: relative;
+    padding: 8rem 0 6.3rem;
+    &:before {
+      content: "";
+      width: 100%;
+      max-width: 121.6rem;
+      height: 0.2rem;
+      background: url(/line-footer.svg) no-repeat center center;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -60.8rem;
+    }
+    .container {
+      @include flex-start-between;
+      flex-direction: row;
+      .left-container {
+        flex: 1;
+        max-width: 82.9rem;
+        @include flex-start;
+        strong {
+          font-weight: 700;
+          font-size: 1.4rem;
+          line-height: 150%;
+          color: var(--white);
+        }
+        p {
+          flex: 1;
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 150%;
+          color: var(--white);
+          opacity: 0.8;
+          margin-left: 8.4rem;
+        }
+      }
+      .right-container {
+        @include flex-center;
+        .group {
+          @include flex-center;
+          margin-right: 7.1rem;
+          span {
+            color: var(--white);
+            font-size: 1.6rem;
+            margin-right: 1.6rem;
+          }
+        }
+        button {
+          width: 3.7rem;
+          height: 3.7rem;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          border-radius: 50%;
+          @include flex-total-center;
+          transition: filter 0.3s ease, -webkit-filter 0.3s ease;
+          &:hover {
+            filter: brightness(0.5);
+          }
+        }
+      }
+    }
+  }
+  @include responsive("laptop") {
+    footer {
+      padding: 6rem 0;
+    }
+  }
+  @include responsive("tablet") {
+    footer {
+      .left-container {
+        p {
+          margin-left: 3rem;
+          max-width: 70%;
+        }
+      }
+    }
+  }
+  @include responsive("tablet-md") {
+    footer {
+      &::before {
+        left: 0;
+        margin-left: 0;
+        background-size: cover;
+      }
+      .container {
+        flex-direction: column;
+        align-items: center;
+        .left-container {
+          max-width: 100%;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 4rem;
+          p {
+            max-width: 90%;
+            text-align: center;
+            margin-left: 0;
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+  @include responsive("mobile") {
+    footer {
+      padding: 4rem 0;
+    }
+  }
+}

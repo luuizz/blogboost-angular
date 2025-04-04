@@ -8,4 +8,13 @@ import { GridComponent } from '../grid/grid.component';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  lastYear: number = new Date().getFullYear();
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+}
