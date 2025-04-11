@@ -1,1 +1,14 @@
-<p>all-posts works!</p>
+<section class="s-artigos">
+  <app-grid>
+    <div class="top">
+      <h2>Artigos</h2>
+      <p>Lorem ipsum dolor sit amet</p>
+    </div>
+
+    <div class="all">
+      @for (item of postsRecentes; track postsRecentes) {
+      <app-card-post-md [post]="item" />
+      }
+    </div>
+  </app-grid>
+</section>
