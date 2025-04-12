@@ -1,0 +1,70 @@
+@use 'mixins' as *;
+
+::ng-deep app-podcasts {
+  .s-podcast {
+    padding: 12rem 0;
+    border-bottom: 2px solid var(--dark-scale-01);
+    .container {
+      .top {
+        @include flexCenterJustify;
+        margin-bottom: 4rem;
+        .ctrl-slide {
+          @include flexCenterJustify;
+          flex: 1;
+          max-width: 18.4rem;
+          .swiper-pagination {
+            position: relative;
+            bottom: 0;
+            width: auto;
+            .swiper-pagination-bullet {
+              background-color: var(--pink);
+              width: 2.4rem;
+              height: .3rem;
+              border-radius: 0;
+              opacity: .25;
+              transition: all .3s ease;
+              &-active {
+                opacity: 1;
+              }
+            }
+          }
+          .ctrl {
+            @include flex-center;
+            .btn-prev {
+              transform: rotate(180deg);
+              margin-right: 1.7rem;
+            }
+          }
+        }
+      }
+
+      .slide-podcast {
+        overflow: hidden;
+        position: relative;
+      }
+    }
+  }
+  @include responsive("desktop-xs") {
+    .s-podcast {
+      padding: 6rem 0rem !important;
+    }
+  }
+  @include responsive("laptop") {
+    .s-podcast {
+      .container {
+        padding: 0;
+        .top {
+          padding: 0 1.5rem;
+          .ctrl-slide {
+            .swiper-pagination {
+              display: none;
+            }
+          }
+        }
+        .slide-podcast {
+          padding: 0 1.5rem;
+        }
+      }
+    }
+  }
+}

@@ -1,1 +1,28 @@
-<p>podcasts works!</p>
+<section class="s-podcast">
+  <app-grid>
+    <div class="top">
+      <h2>Podcasts</h2>
+      <div class="ctrl-slide">
+        <div class="swiper-pagination"></div>
+        <div class="ctrl">
+          <button class="btn btn-prev">
+            <img src="/icon-arrow-right.svg" alt="" />
+          </button>
+          <button class="btn btn-next">
+            <img src="/icon-arrow-right.svg" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper slide-podcast">
+      <div class="swiper-wrapper">
+        @for (item of podcasts; track $index) {
+        <div class="swiper-slide">
+          <app-card-podcasts [podcast]="item"></app-card-podcasts>
+        </div>
+        }
+      </div>
+    </div>
+  </app-grid>
+</section>
