@@ -6,9 +6,11 @@
     </div>
 
     <div class="all">
-      @for (item of postsRecentes; track postsRecentes) {
+      @for (item of postsRecentes; track item.id) {
       <app-card-post-md [post]="item" />
       }
     </div>
+
+    <button class="btn-primary">Carregar mais</button>
   </app-grid>
 </section>
