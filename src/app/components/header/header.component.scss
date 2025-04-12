@@ -8,6 +8,8 @@ header {
   background: rgba(15, 12, 27, 0.5);
   z-index: 2025;
   padding: 2.4rem 0;
+  backdrop-filter: blur(1.6rem);
+  -webkit-backdrop-filter: blur(1.6rem);
   nav {
     @include flexCenterJustify;
     width: 100%;
