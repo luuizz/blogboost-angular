@@ -30,6 +30,9 @@
           }
           .ctrl {
             @include flex-center;
+            .swiper-button-disabled {
+              opacity: .25;
+            }
             .btn-prev {
               transform: rotate(180deg);
               margin-right: 1.7rem;

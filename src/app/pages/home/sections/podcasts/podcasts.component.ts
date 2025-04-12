@@ -1,13 +1,20 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { GridComponent } from "@components/grid/grid.component";
-import { CardPodcastsComponent } from "./card-podcasts/card-podcasts.component";
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { GridComponent } from '@components/grid/grid.component';
+import { CardPodcastsComponent } from './card-podcasts/card-podcasts.component';
 import { addIdsToArray } from 'app/utils/id.util';
 import { Podcast } from '@shared/interfaces/podcast.interface';
-import { register } from 'swiper/element/bundle';
-import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-register();
+import 'swiper/css/navigation';
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
 
 @Component({
   selector: 'app-podcasts',
@@ -19,7 +26,7 @@ register();
 export class PodcastsComponent implements AfterViewInit {
   podcasts: Podcast[] = [];
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.podcasts = addIdsToArray([
       {
         image: '/img-podcast-01.jpg',
@@ -27,7 +34,7 @@ export class PodcastsComponent implements AfterViewInit {
         title: 'Realidade virtual: Entendendo a tecnologia',
         link: '#',
         readingTime: '12min',
-        episode: 1
+        episode: 1,
       },
       {
         image: '/img-podcast-02.jpg',
@@ -35,7 +42,7 @@ export class PodcastsComponent implements AfterViewInit {
         title: 'Realidade virtual: Entendendo a tecnologia',
         link: '#',
         readingTime: '12min',
-        episode: 2
+        episode: 2,
       },
       {
         image: '/img-podcast-03.jpg',
@@ -43,7 +50,7 @@ export class PodcastsComponent implements AfterViewInit {
         title: 'Realidade virtual: Entendendo a tecnologia',
         link: '#',
         readingTime: '12min',
-        episode: 3
+        episode: 3,
       },
       {
         image: '/img-podcast-04.jpg',
@@ -51,7 +58,7 @@ export class PodcastsComponent implements AfterViewInit {
         title: 'Realidade virtual: Entendendo a tecnologia',
         link: '#',
         readingTime: '12min',
-        episode: 4
+        episode: 4,
       },
       {
         image: '/img-podcast-04.jpg',
@@ -59,46 +66,39 @@ export class PodcastsComponent implements AfterViewInit {
         title: 'Realidade virtual: Entendendo a tecnologia',
         link: '#',
         readingTime: '12min',
-        episode: 5
+        episode: 5,
       },
     ]);
   }
 
-  ngAfterViewInit() {
-    const slidePodcast = new Swiper('.slide-podcast', {
-      slidesPerView: 4,
-      spaceBetween: 32,
-      pagination: {
-        el: '.s-podcast .top .ctrl-slide .swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.s-podcast .top .btn-next',
-        prevEl: '.s-podcast .top .btn-prev',
-      },
-      speed: 600,
-      breakpoints: {
-        320: {
-          slidesPerView: 1.1,
-          spaceBetween: 20,
+  async ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      new Swiper('.slide-podcast', {
+        modules: [Pagination, Navigation],
+        slidesPerView: 4,
+        spaceBetween: 32,
+        speed: 600,
+        grabCursor: true,
+        pagination: {
+          el: '.s-podcast .top .ctrl-slide .swiper-pagination',
+          clickable: true,
         },
-        500: {
-          slidesPerView: 1.5,
+        navigation: {
+          nextEl: '.s-podcast .top .ctrl-slide .ctrl .btn-next',
+          prevEl: '.s-podcast .top .ctrl-slide .ctrl .btn-prev',
         },
-        768: {
-          slidesPerView: 2.1,
+        breakpoints: {
+          320: { slidesPerView: 1.1, spaceBetween: 20 },
+          500: { slidesPerView: 1.5 },
+          768: { slidesPerView: 2.1 },
+          991: { slidesPerView: 2.5 },
+          1100: { slidesPerView: 3.5, spaceBetween: 32 },
+          1200: { slidesPerView: 4 },
         },
-        991: {
-          slidesPerView: 2.5,
-        },
-        1100: {
-          slidesPerView: 3.5,
-          spaceBetween: 32,
-        },
-        1200: {
-          slidesPerView: 4,
-        },
-      },
-    });
+      });
+      // setTimeout(() => {
+        
+      // }, 0)
+    }
   }
 }
