@@ -30,7 +30,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles/global.scss"],
+            "styles": ["src/styles/global.scss", "src/styles/swiper-bundle.min.css"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
