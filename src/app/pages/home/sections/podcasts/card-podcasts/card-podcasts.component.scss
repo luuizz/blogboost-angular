@@ -1,0 +1,102 @@
+@use "mixins" as *;
+
+.card-podcast {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 28rem;
+  height: 42rem;
+  overflow: hidden;
+  &:hover {
+    .image {
+      img {
+        transform: scale(1.05);
+      }
+    }
+    .info {
+      .play {
+        opacity: 1;
+      }
+    }
+  }
+  .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 0;
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(5, 1, 16, 0.1) 45.77%, #050110 70.06%);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease, -webkit-transform .3s ease;
+    }
+  }
+  .info {
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    z-index: 1;
+    padding: 0 2.4rem;
+    transition: bottom .3s ease;
+    .time {
+      @include flex-center;
+      margin-bottom: .8rem;
+      .tag-ep {
+        display: inline-block;
+        padding: .6rem 1rem;
+        background: rgba(255, 255, 255, .1);
+        -webkit-backdrop-filter: blur(1.6rem);
+        backdrop-filter: blur(1.6rem);
+        border-radius: 8rem;
+        color: var(--pink);
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 105%;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        margin-right: 1.6rem;
+      }
+      .read {
+        @include flex-center;
+        span {
+          font-weight: 400;
+          font-size: 1.3rem;
+          line-height: 150%;
+          color: var(--white);
+          opacity: .7;
+          margin-left: .8rem;
+        }
+      }
+    }
+    .play {
+      @include flex-center;
+      margin-top: 1.6rem;
+      transition: all .3s ease;
+      span {
+        margin-left: .8rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 120%;
+        color: var(--pink);
+      }
+    }
+  }
+
+  @include responsive("laptop") {
+    max-width: 100%;
+    .info {
+      bottom: 4rem;
+    }
+  }
+}

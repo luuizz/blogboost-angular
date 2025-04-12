@@ -1,0 +1,19 @@
+<a [href]="podcast.link" class="card-podcast">
+  <div class="image">
+    <img [src]="podcast.image" [alt]="podcast.alt" />
+  </div>
+  <div class="info">
+    <div class="time">
+      <span class="tag-ep">Ep {{ podcast.episode }}</span>
+      <div class="read">
+        <img src="/icon-timer.svg" alt="Ícone de um relogio" />
+        <span>{{ podcast.readingTime }}</span>
+      </div>
+    </div>
+    <h6 class="txt-white">{{ podcast.title }}</h6>
+    <div class="play">
+      <img src="/icon-play.svg" alt="Ícone de dar o play" />
+      <span>Ouvir agora</span>
+    </div>
+  </div>
+</a>
