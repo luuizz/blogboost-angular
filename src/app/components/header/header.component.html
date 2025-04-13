@@ -1,9 +1,20 @@
 <header>
   <app-grid className="container--flex">
     <a href="/" title="Página Inicial">
-      <img src="/logo-codeboost.svg" alt="Logo">
+      <img src="/logo-codeboost.svg" alt="Logo" />
     </a>
 
     <app-navigation />
+    <button
+      (click)="toggleMenu()"
+      [class.active]="ismenuOpen"
+      class="btn-menu"
+      tabindex="0"
+      role="button"
+      aria-controls="navigation"
+    >
+      <span class="btn-menu-inner"></span>
+    </button>
   </app-grid>
 </header>
+<app-aside [class.active]="ismenuOpen" (linkClicked)="ismenuOpen = false" />
