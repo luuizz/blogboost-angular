@@ -22,6 +22,7 @@
       width: 100%;
       max-width: 38.4rem;
       height: 10.4rem;
+      gap: 2.4rem;
       &:hover {
         .image {
           img {
@@ -35,10 +36,12 @@
         }
       }
       .image {
+
         width: 10.4rem;
         height: 10.4rem;
         border-radius: 0.8rem;
         overflow: hidden;
+        aspect-ratio: 1/1;
         img {
           width: 100%;
           height: 100%;
@@ -48,7 +51,6 @@
       }
       .info {
         flex: 1;
-        margin-left: 3.2rem;
         h6 {
           margin-top: 1.2rem;
           margin-bottom: 0.5rem;
@@ -89,9 +91,13 @@
       .card-post-xs {
         max-width: 100%;
         justify-content: center;
-        .info {
-          flex: initial;
-        }
+      }
+    }
+  }
+  @include responsive("tablet-md") {
+    .item-post {
+      .card-post-xs {
+        flex: initial;
       }
     }
   }
