@@ -1,0 +1,24 @@
+<section class="s-playlists">
+  <app-grid>
+    <div class="text-left">
+      <img src="/icon-playlist.svg" alt="Ícone de uma playlist" />
+      <h4>Algumas playlists do canal</h4>
+    </div>
+
+    <div class="right-container">
+      @for (item of itemsPlaylist; track item.id) {
+      <a href="#" class="item-playlist">
+        <div class="icons">
+          @if (isMultipleImages(item)) { @for (icon of item.image; track
+          icon.path) {
+          <img [src]="icon.path" [alt]="icon.alt" />
+          } } @else {
+          <img [src]="item.image" [alt]="item.alt" />
+          }
+        </div>
+        <h5>{{ item.title }}</h5>
+      </a>
+      }
+    </div>
+  </app-grid>
+</section>
