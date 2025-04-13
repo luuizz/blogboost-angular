@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 
 @Component({
@@ -30,4 +30,10 @@ export class NavigationComponent {
       altIcon: 'Ícone de código',
     },
   ];
+
+  @Output() linkClicked = new EventEmitter<void>();
+
+  onLinkClick() {
+    this.linkClicked.emit();
+  }
 }

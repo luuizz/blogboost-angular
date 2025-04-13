@@ -16,3 +16,60 @@ header {
     max-width: 83.2rem;
   }
 }
+
+.btn-menu {
+    display: none;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    &.active {
+      .btn-menu-inner {
+        border-top-color: transparent;
+        &:before {
+          top: 0rem;
+          transform: rotate(135deg);
+        }
+        &:after {
+          top: -.2rem;
+          transform: rotate(45deg);
+        }
+        &::after,
+        &::before {
+          margin-top: 0;
+        }
+      }
+    }
+    .btn-menu-inner {
+      width: 100%;
+      display: block;
+      height: auto;
+      border-top: 2px solid;
+      cursor: pointer;
+      color: var(--white);
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        height: .2rem;
+        margin-top: 0.9rem;
+        background: currentColor;
+        transition: transform .2s ease, -webkit-transform .2s ease;
+        position: relative;
+      }
+    }
+}
+
+::ng-deep app-header {
+  @include responsive("tablet") {
+    header {
+      .container {
+        app-navigation {
+          display: none
+        }
+        .btn-menu {
+          @include flex-total-center;
+        }
+      }
+    }
+  }
+}

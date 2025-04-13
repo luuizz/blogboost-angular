@@ -1,8 +1,8 @@
 <nav>
   <ul>
     <li *ngFor="let item of navigationItems">
-      <a class="item-category" [href]="item.link">
-        <img [src]="item.icon" [alt]="item.altIcon">
+      <a class="item-category" (click)="onLinkClick()" [href]="item.link">
+        <img [src]="item.icon" [alt]="item.altIcon" />
         <span>{{ item.title }}</span>
       </a>
     </li>
