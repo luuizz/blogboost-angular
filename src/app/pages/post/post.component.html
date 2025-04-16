@@ -1,5 +1,70 @@
-<section>
-  <p *ngIf="slug">Este é o post: <strong>{{ slug }}</strong></p>
-  <p *ngIf="!slug">Nenhum post encontrado.</p>
+<section class="s-detalhes-post">
+  <app-grid>
+    <div class="top-details">
+      <ul class="breadcrumbs">
+        <li>
+          <a href="/" title="Voltar para a página inicial">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.66669 5.73328V13.9999H13.3334V5.73328"
+                stroke="#9995A6"
+                stroke-width="1.5"
+              />
+              <path
+                d="M1.33331 6.66667L7.99998 2L14.6666 6.66667"
+                stroke="#9995A6"
+                stroke-width="1.5"
+              />
+              <path
+                d="M10 14V9.99996C10 9.26329 9.40333 8.66663 8.66667 8.66663H7.33333C6.59667 8.66663 6 9.26329 6 9.99996V14"
+                stroke="#9995A6"
+                stroke-width="1.5"
+              />
+            </svg>
+          </a>
+        </li>
+        @for (cat of post.categoria; track $index) {
+        <li>
+          <a [href]="'/categoria/' + cat.slug">{{ cat.nomeDaCategoria }}</a>
+        </li>
+        }
+        <li>
+          <span>{{ post.titulo }}</span>
+        </li>
+      </ul>
 
+      <app-post-header-actions />
+    </div>
+
+    <div class="featured-info-post">
+      <div class="image">
+        <img
+          [src]="post.imagemDestacada.url"
+          alt="Imagem destacada do post"
+          [width]="post.imagemDestacada.width"
+          [height]="post.imagemDestacada.height"
+        />
+      </div>
+
+      <div class="box-info-post">
+        <app-caption [label]="post.categoria[0].nomeDaCategoria" />
+        <h1>{{ post.titulo }}</h1>
+
+        <app-post-meta [data]="post.createdAt" [tempoLeitura]="readingTime" />
+      </div>
+    </div>
+  </app-grid>
 </section>
+
+@if (isLoading) {
+<div class="loader">Carregando post...</div>
+} @else {
+<div class="post-content" [innerHTML]="post.conteudoPost[0].html"></div>
+
+}
