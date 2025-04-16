@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   standalone: true,
 })
 export class CaptionComponent {
-  @Input() label: string = '';
+  @Input() label?: string = '';
 }
