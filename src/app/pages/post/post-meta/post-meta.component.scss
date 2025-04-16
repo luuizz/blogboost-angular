@@ -1,0 +1,25 @@
+@use 'mixins' as *;
+
+::ng-deep app-post-meta {
+  .post-meta {
+    @include flex-center;
+    gap: 2.4rem;
+    li {
+      @include flex-center;
+      gap: 8px;
+      span {
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 150%;
+        color: var(--gray-scale-04);
+        margin-left: .8rem;
+      }
+    }
+  }
+  @include responsive("mobile") {
+    .post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

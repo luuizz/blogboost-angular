@@ -1,0 +1,16 @@
+@use 'mixins' as *;
+
+::ng-deep app-post-header-actions {
+  .btn {
+    @include flex-center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 100%;
+    color: var(--white);
+    transition: filter .3s ease, -webkit-filter .3s ease;
+    gap: 1.4rem;
+    &:hover {
+      filter: brightness(0.6);
+    }
+  }
+}
