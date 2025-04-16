@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-navigation',
-  imports: [CommonModule, SearchComponent],
+  imports: [CommonModule, SearchComponent, NgOptimizedImage],
   standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',

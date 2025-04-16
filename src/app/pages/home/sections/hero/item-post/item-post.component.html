@@ -1,14 +1,24 @@
 <div class="item-post">
   <a class="card-post-xs" [href]="post.link">
     <div class="image">
-      <img [src]="post.image" [alt]="post.alt" fill />
+      <img
+        [ngSrc]="post.image"
+        [alt]="post.alt"
+        width="104"
+        height="104"
+        loading="lazy"
+      />
     </div>
     <div class="info">
       <app-caption label="{{ post.category }}" />
       <h6 class="txt-white">{{ post.title }}</h6>
       <ul>
-        <li><span>{{ post.date }}</span></li>
-        <li><span>{{ post.readingTime }}</span></li>
+        <li>
+          <span>{{ post.date }}</span>
+        </li>
+        <li>
+          <span>{{ post.readingTime }}</span>
+        </li>
       </ul>
     </div>
   </a>

@@ -6,7 +6,7 @@ import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-item-post',
-  imports: [CaptionComponent, CommonModule],
+  imports: [CaptionComponent, CommonModule, NgOptimizedImage],
   templateUrl: './item-post.component.html',
   styleUrl: './item-post.component.scss',
   standalone: true,
