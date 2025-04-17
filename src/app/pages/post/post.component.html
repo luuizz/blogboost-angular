@@ -58,13 +58,25 @@
 
         <app-post-meta [data]="post.createdAt" [tempoLeitura]="readingTime" />
       </div>
+
+      <article class="info-post-geral">
+        <div class="left-content">
+          <app-post-topics [htmlContainerRef]="postContentRef" />
+        </div>
+
+        <div class="right-content">
+          <div
+            #postContent
+            class="post-content"
+            [innerHTML]="post.conteudoPost[0].html"
+          ></div>
+
+          <div class="share">
+            <strong>Compartilhe esse conteúdo</strong>
+            <app-post-share-url [titulo]="post.titulo" [slug]="post.slug" />
+          </div>
+        </div>
+      </article>
     </div>
   </app-grid>
 </section>
-
-@if (isLoading) {
-<div class="loader">Carregando post...</div>
-} @else {
-<div class="post-content" [innerHTML]="post.conteudoPost[0].html"></div>
-
-}

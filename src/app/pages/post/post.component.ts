@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { gql } from 'graphql-request';
 import { hygraph } from 'utils/hygraph';
@@ -8,11 +8,13 @@ import { GridComponent } from "../../components/grid/grid.component";
 import { CaptionComponent } from "../../components/caption/caption.component";
 import { PostHeaderActionsComponent } from "./post-header-actions/post-header-actions.component";
 import { PostMetaComponent } from "./post-meta/post-meta.component";
+import { PostShareUrlComponent } from "./post-share-url/post-share-url.component";
+import { PostTopicsComponent } from "./post-topics/post-topics.component";
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, GridComponent, PostHeaderActionsComponent, CaptionComponent, PostMetaComponent],
+  imports: [CommonModule, GridComponent, PostHeaderActionsComponent, CaptionComponent, PostMetaComponent, PostShareUrlComponent, PostTopicsComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
 })
@@ -22,6 +24,7 @@ export class PostComponent implements OnInit {
   readingTime: number = 0;
   isLoading = true;
   post!: PostResponse['post'];
+  @ViewChild('postContent', { static: false }) postContentRef!: ElementRef;
 
   constructor(private route: ActivatedRoute) {}
 

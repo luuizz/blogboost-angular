@@ -100,25 +100,94 @@
           }
         }
       }
+      .info-post-geral {
+        @include flex-start;
+        margin-top: 8rem;
+        .left-content {
+          flex: 1;
+          max-width: 23.6rem;
+          position: sticky;
+          top: 11rem;
+          h6 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            line-height: 120%;
+            color: var(--gray-scale-01);
+            margin-bottom: 4rem;
+          }
+        }
+        .right-content {
+          flex: 1;
+          max-width: 80rem;
+          margin-left: 7.6rem;
+          .post-content {
+            width: 100%;
+            border-bottom: .2rem solid rgba(28, 22, 46, .1);
+            padding-bottom: 4rem;
+            margin-bottom: 4rem;
+          }
+
+          .share {
+            @include flexCenterJustify;
+            strong {
+              font-weight: 600;
+              font-size: 1.6rem;
+              line-height: 100%;
+              color: var(--gray-scale-01);
+            }
+          }
+        }
+      }
     }
   }
   .post-content {
-    background-color: white;
     p {
-      margin-bottom: 1.5rem;
-      line-height: 150%;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 175%;
+      color: var(--gray-scale-03);
+      margin-bottom: 1.6rem;
+      a {
+        text-decoration: underline;
+        transition: filter .3s ease, -webkit-filter .3s ease;
+        &:hover {
+          filter: brightness(0.5);
+        }
+      }
+
+    }
+    
+    code {
+      background: rgb(195 202 241);
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      font-family: monospace;
+      color: var(--gray-scale-01);
     }
   
-    h2, h3, h4 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: #fff;
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--gray-scale-01);
+      margin-bottom: 2.4rem;
     }
   
     ul, ol {
-      padding-left: 2rem;
-      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      margin-bottom: 4rem;
+      li {
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: 175%;
+        color: var(--gray-scale-03);
+        &::marker {
+          color: var(--pink);
+        }
+      }
+    }
+
+    ol {
+      li {
+        list-style-type: decimal;
+      }
     }
   
     li {
@@ -126,9 +195,10 @@
     }
   
     a {
-      color: #ff0078;
+      font-size: 1.6rem;
+      color: var(--pink);
       text-decoration: underline;
-  
+      transition: all .3s ease;
       &:hover {
         text-decoration: none;
       }
@@ -142,12 +212,28 @@
     }
   
     blockquote {
-      margin: 2rem 0;
-      padding: 1rem 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 4px solid #ff0078;
-      font-style: italic;
-      color: #aaa;
+      border-left: .2rem solid rgba(92, 31, 166, .15);
+      padding-left: 2.4rem;
+      margin-bottom: 4rem;
+      p {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  @include responsive("laptop") {
+    .s-detalhes-post {
+      .container {
+        .info-post-geral {
+          .left-content {
+            display: none;
+          }
+          .right-content {
+            max-width: 100%;
+            margin-left: 0;
+
+          }
+        }
+      }
     }
   }
   @include  responsive("tablet") {
@@ -157,6 +243,7 @@
           .box-info-post {
             max-width: 85rem;
             padding: 4rem;
+
           }
         }
       }
@@ -210,22 +297,37 @@
             }
           }
         }
+        .info-post-geral {
+          margin-top: 4rem;
+          .right-content {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            .share {
+              flex-direction: column;
+              justify-content: space-between;
+              strong {
+                display: block;
+                margin-bottom: 2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .post-content {
+      blockquote {
+        padding-left: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        font-size: 2.4rem;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
       }
     }
   }
-}
-
-.loader {
-  padding: 3rem 0;
-  text-align: center;
-  font-size: 1rem;
-  color: #aaa;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%   { opacity: 0.3; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.3; }
 }
 
