@@ -1,0 +1,49 @@
+@use 'mixins' as *;
+
+::ng-deep app-post-topics {
+  .topics {
+    position: relative;
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+    li {
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+      a {
+        @include flex-start;
+        &:hover {
+          span {
+            color: var(--gray-scale-01);
+          }
+          &::before {
+            background-color: var(--pink);
+          }
+        }
+        &.active {
+          span {
+            color: var(--gray-scale-01);
+          }
+          &::before {
+            background-color: var(--pink);
+          }
+        }
+        &::before {
+          content: "";
+          width: .4rem;
+          height: .4rem;
+          display: inline-block;
+          background-color: var(--gray-scale-05);
+          margin-top: 1.1rem;
+          margin-right: 1.6rem;
+        }
+        span {
+          flex: 1;
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 150%;
+          color: var(--gray-scale-04);
+        }
+      }
+    }
+  }
+}

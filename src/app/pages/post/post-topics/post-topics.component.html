@@ -1,0 +1,8 @@
+<h6>Navegue por tópicos</h6>
+<ul class="topics js-topics" #listTopics>
+  <li *ngFor="let topic of topics; let i = index">
+    <a href="#" (click)="scrollTo(i, $event)">
+      <span>{{ topic }}</span>
+    </a>
+  </li>
+</ul>
