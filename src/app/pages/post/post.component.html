@@ -29,7 +29,7 @@
             </svg>
           </a>
         </li>
-        @for (cat of post.categoria; track $index) {
+        @for (cat of post.categoria.slice(0, 2); track $index) {
         <li>
           <a [href]="'/categoria/' + cat.slug">{{ cat.nomeDaCategoria }}</a>
         </li>
@@ -80,3 +80,8 @@
     </div>
   </app-grid>
 </section>
+
+<app-post-related
+  [slugAtual]="post.slug"
+  [categoriaSlug]="post.categoria[0].slug"
+/>
