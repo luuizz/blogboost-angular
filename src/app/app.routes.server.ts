@@ -13,5 +13,13 @@ export const serverRoutes: ServerRoute[] = [
       const slugs = await getAllSlugs();
       return slugs.map(slug => ({ slug }));
     }
+  },
+  {
+    path: 'categoria/:slug',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      const slugs = await getAllSlugs();
+      return slugs.map(slug => ({ slug }));
+    }
   }
 ];

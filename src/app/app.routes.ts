@@ -1,9 +1,9 @@
 import { Routes, RouterModule, provideRouter } from '@angular/router';
 import { PostComponent } from './pages/post/post.component';
-import { NgModule } from '@angular/core';
 import { HomeComponent } from './pages/home/home.component';
 import { ApplicationConfig } from '@angular/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoriaComponent } from './pages/categoria/categoria.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +17,10 @@ export const routes: Routes = [
   {
     path: '**',
     component: NotFoundComponent,
+  },
+  {
+    path: 'categoria/:slug',
+    component: CategoriaComponent,
   }
 ];
 
