@@ -1,0 +1,39 @@
+<section class="s-post-semelhantes">
+  <app-grid>
+    <div class="top">
+      <h2>Artigos semelhantes</h2>
+      <p>Lorem ipsum dolor sit amet</p>
+    </div>
+
+    <div class="all">
+      <a
+        *ngFor="let item of relatedPosts"
+        [href]="'/post/' + item.slug"
+        class="card-post-default"
+        title="Acessar conteúdo"
+      >
+        <div class="image">
+          <img
+            [src]="item.imagemDestacada.url"
+            [width]="item.imagemDestacada.width"
+            [height]="item.imagemDestacada.height"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="info">
+          <span class="category">{{ item.categoria[0].nomeDaCategoria }}</span>
+          <h6 class="txt-white">{{ item.titulo }}</h6>
+          <ul>
+            <li>
+              <span>{{ item.createdAt | date : "d MMMM" }}</span>
+            </li>
+            <li>
+              <span>{{ item.readingTime }}</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  </app-grid>
+</section>
