@@ -1,0 +1,8 @@
+@use 'mixins' as *;
+
+::ng-deep app-post-share-url {
+  .social-sharer {
+    @include flex-center;
+    gap: 3.2rem;
+  }
+}
