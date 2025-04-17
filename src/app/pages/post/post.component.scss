@@ -147,6 +147,9 @@
       line-height: 175%;
       color: var(--gray-scale-03);
       margin-bottom: 1.6rem;
+      strong {
+        color: inherit;
+      }
       a {
         text-decoration: underline;
         transition: filter .3s ease, -webkit-filter .3s ease;
@@ -156,13 +159,25 @@
       }
 
     }
+
+    pre {
+      padding: 2rem;
+      background-color: rgba(195, 202, 241, 0.377);
+      border-radius: 1.2rem;
+      margin-bottom: 2.4rem;
+      code {
+        background: none;
+      }
+    }
     
     code {
-      background: rgb(195 202 241);
+      background-color: rgba(195, 202, 241, 0.377);
       border-radius: 4px;
       padding: 0.2rem 0.4rem;
       font-family: monospace;
       color: var(--gray-scale-01);
+      font-size: 1.6rem;
+      margin-bottom: 2.4rem;
     }
   
     h1, h2, h3, h4, h5, h6 {
@@ -189,6 +204,12 @@
         list-style-type: decimal;
       }
     }
+
+    ul {
+      li {
+        list-style-type: disc;
+      }
+    }
   
     li {
       margin-bottom: 0.5rem;
@@ -208,7 +229,7 @@
       max-width: 100%;
       height: auto;
       margin: 2rem 0;
-      border-radius: 8px;
+      border-radius: 0.8rem;
     }
   
     blockquote {

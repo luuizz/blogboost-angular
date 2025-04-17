@@ -10,11 +10,12 @@ import { PostHeaderActionsComponent } from "./post-header-actions/post-header-ac
 import { PostMetaComponent } from "./post-meta/post-meta.component";
 import { PostShareUrlComponent } from "./post-share-url/post-share-url.component";
 import { PostTopicsComponent } from "./post-topics/post-topics.component";
+import { PostRelatedComponent } from "./post-related/post-related.component";
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, GridComponent, PostHeaderActionsComponent, CaptionComponent, PostMetaComponent, PostShareUrlComponent, PostTopicsComponent],
+  imports: [CommonModule, GridComponent, PostHeaderActionsComponent, CaptionComponent, PostMetaComponent, PostShareUrlComponent, PostTopicsComponent, PostRelatedComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
 })
