@@ -44,6 +44,8 @@
       margin-top: .5rem;
       transition: color .3s ease;
       font-size: 1.8rem;
+      height: 4.4rem;
+      @include truncateText(2);
     }
     ul {
       @include flex-center;

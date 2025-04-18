@@ -12,6 +12,11 @@
     }
     h3 {
       color: var(--pink);
+      height: 6.8rem;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
     }
   }
   .image {
