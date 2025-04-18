@@ -1,33 +1,30 @@
-<a href="#" class="card-post-lg">
+<a [href]="'/post/' + post.slug" class="card-post-lg">
   <div class="image">
     <img
       format="webp"
-      width="728"
-      height="320"
-      ngSrc="/img-feature.jpg"
-      alt="Imagem destacada da postagem. Notebook aberto com uma apresentação abstrata"
+      [width]="post.imagemDestacada.width"
+      [height]="post.imagemDestacada.height"
+      [ngSrc]="post.imagemDestacada.url"
+      [alt]="post.titulo"
     />
   </div>
 
   <div class="info">
     <div class="top-info">
-      <app-caption label="Tecnologia" />
+      <app-caption [label]="post.categoria[0].nomeDaCategoria" />
 
       <ul>
         <li>
           <img src="/icon-calendar.svg" alt="Ícone de um calendário" />
-          <span>16, Fev</span>
+          <span>{{ formattedDate }}</span>
         </li>
-
         <li>
           <img src="/icon-clock.svg" alt="Ícone de um relógio" />
-          <span>12min de leitura</span>
+          <span>{{ readingTime }}</span>
         </li>
       </ul>
     </div>
 
-    <h3>
-      Let your close friends know what you're up to as you move about your day.
-    </h3>
+    <h3>{{ post.titulo }}</h3>
   </div>
 </a>

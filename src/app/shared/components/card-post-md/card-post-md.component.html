@@ -1,19 +1,25 @@
-<a [href]="post.link" class="card-post-default">
+<a [href]="'/post/' + post.slug" class="card-post-default">
   <div class="image">
-    <img [ngSrc]="post.image" format="webp" [alt]="post.alt" fill />
+    <img
+      [ngSrc]="post.imagemDestacada.url"
+      [alt]="post.titulo"
+      [width]="post.imagemDestacada.width"
+      [height]="post.imagemDestacada.height"
+      format="webp"
+    />
   </div>
 
   <div class="info">
-    <app-caption label="{{ post.category }}" />
+    <app-caption [label]="post.categoria[0].nomeDaCategoria" />
 
-    <h6>{{ post.title }}</h6>
+    <h6>{{ post.titulo }}</h6>
 
     <ul>
       <li>
-        <span>{{ post.date }}</span>
+        <span>{{ post.createdAt | date : "d, MMM" }}</span>
       </li>
       <li>
-        <span>{{ post.readingTime }}</span>
+        <span>{{ getReadingTime(post.conteudoPost[0].html || "") }}</span>
       </li>
     </ul>
   </div>

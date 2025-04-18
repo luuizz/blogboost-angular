@@ -1,23 +1,25 @@
 <div class="item-post">
-  <a class="card-post-xs" [href]="post.link">
+  <a class="card-post-xs" [href]="'/post/' + post.slug">
     <div class="image">
       <img
-        [ngSrc]="post.image"
-        [alt]="post.alt"
-        width="104"
-        height="104"
+        [ngSrc]="post.imagemDestacada.url"
+        [alt]="post.titulo"
+        [width]="post.imagemDestacada.width"
+        [height]="post.imagemDestacada.height"
         loading="lazy"
       />
     </div>
     <div class="info">
-      <app-caption label="{{ post.category }}" />
-      <h6 class="txt-white">{{ post.title }}</h6>
+      <app-caption [label]="post.categoria[0].nomeDaCategoria" />
+      <h6 class="txt-white">{{ post.titulo }}</h6>
       <ul>
         <li>
-          <span>{{ post.date }}</span>
+          <span>{{ post.createdAt | date : "d, MMM" }}</span>
         </li>
         <li>
-          <span>{{ post.readingTime }}</span>
+          <span>{{
+            calculateReadingTime(post.conteudoPost[0].html || "")
+          }}</span>
         </li>
       </ul>
     </div>

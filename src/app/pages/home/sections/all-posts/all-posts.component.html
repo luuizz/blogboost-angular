@@ -6,11 +6,13 @@
     </div>
 
     <div class="all">
-      @for (item of postsRecentes; track item.id) {
+      @for (item of visiblePosts; track item) {
       <app-card-post-md [post]="item" />
       }
     </div>
 
-    <button class="btn-primary">Carregar mais</button>
+    <button *ngIf="isMoreToLoad" (click)="loadMore()" class="btn-primary">
+      Carregar mais
+    </button>
   </app-grid>
 </section>

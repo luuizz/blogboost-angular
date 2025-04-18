@@ -6,12 +6,12 @@
         <h2>Em destaque</h2>
       </div>
 
-      <app-item-post-lg />
+      <app-item-post-lg [post]="featuredPost" />
     </div>
     <div class="right-container">
-      <h4>Mais populares</h4>
+      <h4>Mais recentes</h4>
       <div class="all">
-        <app-item-post *ngFor="let post of posts" [post]="post" />
+        <app-item-post *ngFor="let post of recentPosts" [post]="post" />
       </div>
     </div>
   </app-grid>
