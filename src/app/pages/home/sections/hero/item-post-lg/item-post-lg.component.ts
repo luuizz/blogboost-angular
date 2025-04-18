@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CaptionComponent } from '@components/caption/caption.component';
-import { NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RelatedPost } from '@shared/interfaces/relatedPosts';
 
 @Component({
   selector: 'app-item-post-lg',
-  imports: [CaptionComponent, NgOptimizedImage],
+  imports: [CaptionComponent, NgOptimizedImage, CommonModule],
   templateUrl: './item-post-lg.component.html',
   styleUrl: './item-post-lg.component.scss',
 })

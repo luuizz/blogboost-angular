@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { gql } from 'graphql-request';
 import { hygraph } from 'utils/hygraph';
@@ -27,7 +27,7 @@ export class PostComponent implements OnInit {
   post!: PostResponse['post'];
   @ViewChild('postContent', { static: false }) postContentRef!: ElementRef;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
 
   async ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug');
@@ -65,6 +65,7 @@ export class PostComponent implements OnInit {
         const data = await hygraph.request<PostResponse>(query, { slug: this.slug });
         this.post = data.post;
         this.readingTime = this.calculateReadingTime(this.post.conteudoPost[0].html || '');
+        this.cdr.detectChanges();
       } catch (e) {
         console.error('Erro ao carregar post', e);
       } finally {

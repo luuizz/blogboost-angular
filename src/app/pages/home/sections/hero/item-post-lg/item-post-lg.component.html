@@ -1,4 +1,4 @@
-<a [href]="'/post/' + post.slug" class="card-post-lg">
+<a *ngIf="post" [href]="'/post/' + post.slug" class="card-post-lg">
   <div class="image">
     <img
       format="webp"
@@ -6,6 +6,7 @@
       [height]="post.imagemDestacada.height"
       [ngSrc]="post.imagemDestacada.url"
       [alt]="post.titulo"
+      priority
     />
   </div>
 
