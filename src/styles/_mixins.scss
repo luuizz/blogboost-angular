@@ -76,3 +76,10 @@ $breakpoints: (
 @mixin transition {
   transition: all 0.3s ease;
 }
+
+@mixin truncateText($line) {
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
