@@ -39,7 +39,7 @@ export const getRelatedPosts = async (
         titulo
         createdAt
         imagemDestacada {
-          url
+          url(transformation: {document: {output: {format: webp}}})
           width
           height
         }
@@ -59,6 +59,59 @@ export const getRelatedPosts = async (
     categoriaSlug,
   });
 
-  console.log('data', data);
+  return data.posts;
+};
+
+export const getLatestPosts = async (): Promise<RelatedPost[]> => {
+  const query = gql`
+    query GetLatestPosts {
+      posts(orderBy: publishedAt_DESC, first: 4) {
+        slug
+        titulo
+        createdAt
+        imagemDestacada {
+          url(transformation: {document: {output: {format: webp}}})
+          width
+          height
+        }
+        categoria {
+          nomeDaCategoria
+          slug
+        }
+        conteudoPost {
+          html
+        }
+      }
+    }
+  `;
+
+  const data = await hygraph.request<{ posts: RelatedPost[] }>(query);
+  return data.posts;
+};
+
+export const getAllPosts = async (): Promise<RelatedPost[]> => {
+  const query = gql`
+    query GetAllPosts {
+      posts(orderBy: publishedAt_DESC, first: 100) {
+        slug
+        titulo
+        createdAt
+        imagemDestacada {
+          url(transformation: {document: {output: {format: webp}}})
+          width
+          height
+        }
+        categoria {
+          nomeDaCategoria
+          slug
+        }
+        conteudoPost {
+          html
+        }
+      }
+    }
+  `;
+
+  const data = await hygraph.request<{ posts: RelatedPost[] }>(query);
   return data.posts;
 };
