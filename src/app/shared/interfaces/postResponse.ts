@@ -10,8 +10,18 @@ export interface PostResponse {
       height: number;
       url: string;
     };
-    categoria: Categoria[]; // CORREÇÃO AQUI
+    categoria: Categoria[];
     createdAt: string;
+    seo: {
+      title: string;
+      metaDescription: string;
+      metaKeywords: string;
+      ogShare: {
+        url: string;
+        width: number;
+        height: number;
+      }
+    }
   };
 }
 
