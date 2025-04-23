@@ -1,4 +1,5 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { gql } from 'graphql-request';
@@ -27,7 +28,12 @@ export class PostComponent implements OnInit {
   post!: PostResponse['post'];
   @ViewChild('postContent', { static: false }) postContentRef!: ElementRef;
 
-  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private titleService: Title,
+    private metaService: Meta
+  ) {}
 
   async ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug');
@@ -57,6 +63,16 @@ export class PostComponent implements OnInit {
               nomeDaCategoria
               slug
             }
+          seo {
+                title
+                metaDescription
+                metaKeywords
+                ogShare {
+                  url(transformation: {document: {output: {format: webp}}})
+                  width
+                  height
+                }
+            }
           }
         }
       `;
@@ -65,6 +81,7 @@ export class PostComponent implements OnInit {
         const data = await hygraph.request<PostResponse>(query, { slug: this.slug });
         this.post = data.post;
         this.readingTime = this.calculateReadingTime(this.post.conteudoPost[0].html || '');
+        this.setSeo();
         this.cdr.detectChanges();
       } catch (e) {
         console.error('Erro ao carregar post', e);
@@ -72,6 +89,43 @@ export class PostComponent implements OnInit {
         this.isLoading = false;
       }
     }
+  }
+
+  setSeo() {
+    if(!this.post) return;
+
+    this.titleService.setTitle(`Blogboost | ${this.post.seo.title}`);
+    this.metaService.updateTag({
+      name: 'description',
+      content: this.post.seo.metaDescription
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: this.post.seo.metaKeywords
+    })
+    this.metaService.updateTag({
+      property: 'og:title',
+      content: this.post.seo.title || 'Título padrão de post'
+    })
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: this.post.seo.metaDescription
+    })
+    this.metaService.updateTag({
+      property: 'og:type',
+      content: 'article'
+    })
+    this.metaService.updateTag({
+      property: 'og:url',
+      content: `https://blogboost-angular.vercel.app/post/${this.post.slug}`
+    })
+    this.metaService.updateTag({
+      name: 'author',
+      content: 'Luiz Ricardo'
+    })
+    this.metaService.updateTag({ property: 'og:image', content: this.post.imagemDestacada.url });
+    this.metaService.updateTag({ property: 'og:image:width', content: String(this.post.imagemDestacada.width) });
+    this.metaService.updateTag({ property: 'og:image:height', content: String(this.post.imagemDestacada.height) });
   }
 
   calculateReadingTime(text: string): number {
