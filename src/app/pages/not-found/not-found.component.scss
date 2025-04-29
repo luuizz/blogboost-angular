@@ -1,0 +1,96 @@
+@use 'mixins' as *;
+
+::ng-deep app-not-found {
+  .s-not-found {
+    padding: 11.2rem 0;
+    .container {
+      text-align: center;
+      .img-graphic {
+        @include flex-center;
+        flex-direction: column;
+        margin-bottom: 2.4rem;
+        .shadow {
+          width: 45.9rem;
+          height: 2.7rem;
+          border-radius: 20rem;
+          opacity: 0.19;
+          background: var(--gray-scale-03);
+          filter: blur(1.5rem);
+          margin-top: -1.2rem;
+        }
+      }
+      .infos {
+        width: 100%;
+        max-width: 72.6rem;
+        margin: 0 auto;
+        h1 {
+          text-align: center;
+          font-size: 4rem;
+          margin-bottom: 1.2rem;
+        }
+        p {
+          font-size: 1.6rem;
+          color: var(--gray-scale-05);
+          text-wrap: balance;
+          width: 51rem;
+          margin: 0 auto;
+          margin-bottom: 4rem;
+        }
+        .btn-primary {
+          padding: 1.6rem 3.2rem;
+          line-height: 150%;
+          border-radius: 0.4rem;
+          background-color: var(--pink);
+          color: var(--gray-scale-01);
+          transition: background .3s ease;
+          &:hover {
+            background-color: var(--white);
+          }
+        }
+      }
+    }
+  }
+  @include responsive("tablet-md") {
+    .s-not-found {
+      padding: 6.4rem 0;
+      .container {
+        .infos {
+          h1 {
+            font-size: 3.2rem;
+            text-wrap: balance;
+          }
+          p {
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+  @include responsive("mobile") {
+    .s-not-found {
+      padding: 5.6rem 0;
+      .container {
+        .img-graphic {
+          width: 100%;
+          max-width: 25.6rem;
+          margin: 0 auto;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .shadow {
+            width: 100%;
+          }
+        }
+        .infos {
+          .btn-primary {
+            width: 100%;
+            text-wrap: balance;
+          }
+        }
+      }
+    }
+  }
+}
+
