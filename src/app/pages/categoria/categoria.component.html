@@ -1,21 +1,18 @@
-<section>
+<section class="s-categories">
   <app-grid>
-    <div class="top-header">
-      <h4>Navegue por categorias</h4>
-      <div class="controls"></div>
-
-      <div class="swiper-filter">
-
-      </div>
-    </div>
+    <app-top-header
+    [categorias]="categorias" />
 
     <div class="main-area">
-
       <div class="top-filters">
-
+        <h2>Categoria sobre: <span>{{ categoriaAtual?.nomeDaCategoria }}</span></h2>
+        <app-filter-order (orderChange)="ordenarPosts($event)" />
       </div>
       <div class="all-posts">
-
+        <app-card-post-md
+        *ngFor="let post of (postsOrdenados.length ? postsOrdenados : posts)"
+          [post]="post"
+        />
       </div>
     </div>
   </app-grid>

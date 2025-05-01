@@ -1,0 +1,61 @@
+@use 'mixins' as *;
+
+::ng-deep app-categoria {
+  .s-categories {
+    padding: 6.4rem 0;
+    .container {
+      .main-area {
+        .top-filters {
+          margin-bottom: 4rem;
+          @include flexCenterJustify;
+          gap: 4rem;
+          h2 {
+            font-size: 2.4rem;
+            opacity: 0.8;
+            font-weight: 400;
+            span {
+              font-weight: 700;
+              opacity: 1;
+            }
+          }
+        }
+        .all-posts {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3.2rem
+        }
+      }
+    }
+  }
+
+  @include responsive ("tablet") {
+    .s-categories {
+      .container {
+        .main-area {
+          .top-filters {
+            flex-direction: column;
+            gap: 3.2rem;
+            h2 {
+              text-align: center;
+            }
+          }
+          .all-posts {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+      }
+    }
+  }
+  @include responsive ("mobile") {
+    .s-categories {
+      .container {
+        .main-area {
+          .all-posts {
+            grid-template-columns: 1fr;
+            gap: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+}
