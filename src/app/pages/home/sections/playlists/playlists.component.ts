@@ -30,19 +30,22 @@ export class PlaylistsComponent {
           path: "icon-js.svg",
           alt: "Imagem de um icone de javascript"
         }
-      ]
+      ],
+      url: '/categoria/html-css'
     },
     {
       id: 2,
       title: "Desenvolvimento React JS",
       image: "icon-react-xs.svg",
-      alt: "Imagem de um icone de react"
+      alt: "Imagem de um icone de react",
+      url: '/categoria/react'
     },
     {
       id: 3,
       title: "O mundo da Tecnologia",
       image: "icon-wordpress.svg",
-      alt: "Imagem de um icone de wordpress"
+      alt: "Imagem de um icone de wordpress",
+      url: '/categoria/wordpress'
     }
   ]
   isMultipleImages(item: PlaylistItem): item is PlaylistItemWithMultipleImages {
