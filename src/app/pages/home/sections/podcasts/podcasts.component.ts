@@ -23,9 +23,9 @@ import { Navigation, Pagination } from 'swiper/modules';
   styleUrl: './podcasts.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class PodcastsComponent implements AfterViewInit {
   podcasts: Podcast[] = [];
-
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.podcasts = addIdsToArray([
       {
@@ -96,9 +96,6 @@ export class PodcastsComponent implements AfterViewInit {
           1200: { slidesPerView: 4 },
         },
       });
-      // setTimeout(() => {
-        
-      // }, 0)
     }
   }
 }
