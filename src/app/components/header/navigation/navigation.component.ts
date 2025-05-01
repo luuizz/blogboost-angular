@@ -13,19 +13,19 @@ export class NavigationComponent {
   navigationItems = [
     {
       title: 'Tecnologia',
-      link: '#',
+      link: '/categoria/tecnologia',
       icon: '/icon-tecnologia.svg',
       altIcon: 'Ícone de tecnologia',
     },
     {
       title: 'ReactJS',
-      link: '#',
+      link: '/categoria/react',
       icon: '/icon-react.svg',
       altIcon: 'Ícone do React',
     },
     {
       title: 'HTML e CSS',
-      link: '#',
+      link: '/categoria/html-css',
       icon: '/icon-html-css.svg',
       altIcon: 'Ícone de código',
     },
