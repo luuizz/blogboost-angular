@@ -1,6 +1,7 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import { environment } from '../../environment';
 import { RelatedPost } from '@shared/interfaces/relatedPosts';
+import { CategoriasResponse } from '@shared/interfaces/categoriasResponse';
 
 export const hygraph = new GraphQLClient(environment.HYGRAPH_ENDPOINT, {
   headers: {
@@ -61,6 +62,35 @@ export const getRelatedPosts = async (
 
   return data.posts;
 };
+
+export const getSingleCategory = async (): Promise<string[]> => {
+  const query = gql`
+    query GetSingleCategory($categoriaSlug: String!) {
+      categoria(where: {slug: $categoriaSlug}) {
+        slug
+        nomeDaCategoria
+      }
+    }
+  `
+
+
+  const data = await hygraph.request<{ categorias: { slug: string }[] }>(query);
+  return data.categorias.map(c => c.slug);
+}
+
+export const getAllCategorias = async (): Promise<CategoriasResponse[]> => {
+  const query = gql`
+    {
+        categorias(first: 100, orderBy: createdAt_DESC) {
+        nomeDaCategoria
+        slug
+      }
+    }
+  `
+
+  const data = await hygraph.request<{ categorias: CategoriasResponse[] }>(query);
+  return data.categorias;
+}
 
 export const getLatestPosts = async (): Promise<RelatedPost[]> => {
   const query = gql`
