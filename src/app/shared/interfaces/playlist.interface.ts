@@ -6,6 +6,7 @@ export interface PlaylistItemWithMultipleImages {
     path: string;
     alt: string;
   }[];
+  url: string;
 }
 
 export interface PlaylistItemWithSingleImage {
@@ -13,6 +14,7 @@ export interface PlaylistItemWithSingleImage {
   title: string;
   image: string;
   alt: string;
+  url: string;
 }
 
 export type PlaylistItem = PlaylistItemWithMultipleImages | PlaylistItemWithSingleImage;
