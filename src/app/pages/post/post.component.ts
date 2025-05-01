@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { gql } from 'graphql-request';
 import { hygraph } from 'utils/hygraph';
 import { PostResponse } from '@shared/interfaces/postResponse';
@@ -30,6 +30,7 @@ export class PostComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private cdr: ChangeDetectorRef,
     private titleService: Title,
     private metaService: Meta
@@ -40,6 +41,11 @@ export class PostComponent implements OnInit {
 
     if (!this.slug) {
       this.isLoading = false;
+      return;
+    }
+
+    if (!this.slug) {
+      this.router.navigate(['/404'], { replaceUrl: true });
       return;
     }
 
@@ -79,12 +85,18 @@ export class PostComponent implements OnInit {
 
       try {
         const data = await hygraph.request<PostResponse>(query, { slug: this.slug });
+
+        if (!data.post) {
+          this.router.navigate(['/404'], { replaceUrl: true });
+          return;
+        }
         this.post = data.post;
         this.readingTime = this.calculateReadingTime(this.post.conteudoPost[0].html || '');
         this.setSeo();
         this.cdr.detectChanges();
       } catch (e) {
         console.error('Erro ao carregar post', e);
+        this.router.navigate(['/404'], { replaceUrl: true });
       } finally {
         this.isLoading = false;
       }
