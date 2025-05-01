@@ -1,0 +1,73 @@
+@use 'mixins' as *;
+
+::ng-deep app-top-header {
+  .top-header {
+    @include flexCenterJustify;
+    margin-bottom: 3.2rem;
+    h4 {
+      font-size: 3.2rem;
+    }
+    .controls {
+      @include flex-center;
+      gap: 1.2rem;
+      .swiper-button-disabled {
+        opacity: .2;
+      }
+      .btn-filter {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: .4rem;
+        background-color: var(--pink);
+        transition: opacity .3s ease;
+        &.prev-filter {
+          transform: rotate(180deg);
+        }
+        svg {
+          width: 2.4rem;
+          height: 2.4rem;
+          path {
+            fill: var(--gray-scale-01);
+          }
+        }
+      }
+    }
+  }
+
+  .swiper-filter {
+    overflow-x: hidden;
+    background-color: var(--gray-scale-02);
+    padding: 1rem;
+    border-radius: .4rem;
+    margin-bottom: 8rem;
+    .swiper-slide {
+      background-color: transparent;
+      width: auto;
+      &:not(:last-child) {
+        margin-right: 2.1rem;
+      }
+      .btn-category {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.6rem;
+        font-weight: 400;
+        display: block;
+        text-align: center;
+        transition: all .3s ease;
+        border-radius: .4rem;
+        background-color: transparent;
+        color: var(--gray-scale-05);
+        &.active, &:hover {
+          background-color: var(--pink);
+          color: var(--gray-scale-01);
+        }
+      }
+    }
+  }
+  @include responsive("tablet") {
+    .top-header {
+      gap: 2.4rem;
+      h4 {
+        font-size: 2.4rem;
+      }
+    }
+  }
+}

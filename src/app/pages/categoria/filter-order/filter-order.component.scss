@@ -1,0 +1,87 @@
+@use 'mixins' as *;
+
+::ng-deep app-filter-order {
+  .order {
+    @include flex-center;
+    gap: 1.6rem;
+    .label-order {
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 150%;
+      color: var(--white);
+    }
+    .select-custom {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      &.active {
+        .item-selected {
+          border-color: var(--pink);
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+        .dropdown {
+          opacity: 1;
+          top: 5rem;
+          pointer-events: all;
+          transition: all .3s ease;
+        }
+      }
+      .item-selected {
+        @include flexCenterJustify;
+        cursor: pointer;
+        padding: 1.2rem 1.6rem;
+        border-radius: .8rem;
+        width: 17.6rem;
+        gap: 5.4rem;
+        background-color: var(--gray-scale-02);
+        border: 1px solid transparent;
+        transition: border-color .3s ease;
+        span {
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 150%;
+          color: var(--white);
+        }
+        svg {
+          transition: all .3s ease;
+        }
+      }
+      .dropdown {
+        width: 100%;
+        position: absolute;
+        top: 3.8rem;
+        left: 0;
+        max-height: 28rem;
+        overflow-y: auto;
+        border-radius: .4rem;
+        transition: all .3s ease;
+        pointer-events: none;
+        opacity: 0;
+        padding: 1.4rem 0;
+        z-index: 22;
+        background-color: var(--gray-scale-02);
+        box-shadow: 0px 7px 10px rgba(0, 71, 114, .07);
+        li {
+          button {
+            font-size: 1.6rem;
+            color: var(--gray-scale-05);
+            display: inline-block;
+            transition: all .3s ease;
+            padding: 1rem 2rem;
+            font-weight: 400;
+            width: 100%;
+            text-align: left;
+            &:hover {
+              background-color: var(--gray-scale-01);
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+  }
+  @include responsive("tablet") {
+  }
+}

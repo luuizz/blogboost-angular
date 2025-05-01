@@ -1,0 +1,17 @@
+<div class="order">
+  <span class="label-order">Ordenar por:</span>
+  <div class="select-custom" [ngClass]="{ active: isDropdownOpen }" #dropdownRef>
+    <div class="item-selected" (click)="toggleDropdown()">
+      <span>Selecione</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8" fill="none">
+        <path d="M5.49977 7.38464L0.576697 0.615412L10.4229 0.615413L5.49977 7.38464Z" fill="#F67ACB"/>
+      </svg>
+    </div>
+
+    <ul class="dropdown">
+      <li *ngFor="let option of options">
+        <button type="button" (click)="selectOrder(option.value)">{{ option.label }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
