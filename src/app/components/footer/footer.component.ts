@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { GridComponent } from '../grid/grid.component';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [GridComponent, NgOptimizedImage],
+  imports: [GridComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
