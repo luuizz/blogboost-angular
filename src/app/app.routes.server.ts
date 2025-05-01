@@ -1,5 +1,5 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { getAllSlugs } from 'utils/hygraph';
+import { getAllSlugs, getSingleCategory  } from 'utils/hygraph';
 
 export const serverRoutes: ServerRoute[] = [
   {
@@ -18,7 +18,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'categoria/:slug',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
-      const slugs = await getAllSlugs();
+      const slugs = await getSingleCategory();
       return slugs.map(slug => ({ slug }));
     }
   }
