@@ -83,3 +83,16 @@ $breakpoints: (
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+@mixin responsiveAllCards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 3.2rem;
+  @include responsive("tablet") {
+    grid-template-columns: repeat(2,1fr);
+  }
+  @include responsive("mobile") {
+    grid-template-columns: 1fr;
+    grid-gap: 2.4rem;
+  }
+}
