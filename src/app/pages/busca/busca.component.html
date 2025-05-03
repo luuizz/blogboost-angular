@@ -1,0 +1,20 @@
+<section class="s-search-results" *ngIf="resultados.length; else semResultados">
+  <app-grid>
+    <div class="top-infos">
+      <h1>Resultados da sua busca</h1>
+      <p>Nós encontramos {{ resultados.length }} resultados para <span>{{ query }}</span></p>
+    </div>
+
+   <div class="main-area">
+    <h2>{{ resultados.length }} Artigos</h2>
+
+    <div class="all-posts">
+        <app-card-post-md *ngFor="let post of resultados" [post]="post" />
+      </div>
+   </div>
+  </app-grid>
+</section>
+
+<ng-template #semResultados>
+  <app-no-results />
+</ng-template>

@@ -1,5 +1,5 @@
-<form action="" class="search">
-  <input type="text" placeholder="Pesquise por artigo ou tema">
+<form (submit)="onSearch(termo)" class="search">
+  <input type="text" [(ngModel)]="termo" placeholder="Pesquise por artigo ou tema" [ngModelOptions]="{standalone: true}">
   <button type="submit">
     <img src="/icon-search.svg" alt="Ícone de uma lupa" title="Pesquisar">
   </button>

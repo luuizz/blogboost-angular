@@ -1,0 +1,46 @@
+@use 'mixins' as *;
+
+::ng-deep app-busca {
+  .s-search-results {
+    padding: 6.4rem 0;
+    .container {
+      .top-infos {
+        margin-bottom: 4rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid var(--gray-scale-03);
+        h1 {
+          font-size: 2.4rem;
+          margin-bottom: 2.4rem;
+        }
+        p {
+          font-size: 1.8rem;
+          color: var(--gray-scale-05);
+          span {
+            color: var(--white);
+            text-transform: capitalize;
+          }
+        }
+      }
+      .main-area {
+        h2 {
+          font-size: 4.8rem;
+          margin-bottom: 4rem;
+        }
+        .all-posts {
+          @include responsiveAllCards;
+        }
+      }
+    }
+  }
+  @include responsive("laptop") {
+    .s-search-results {
+      .container {
+        .main-area {
+          h2 {
+            font-size: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+}
