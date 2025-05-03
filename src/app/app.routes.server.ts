@@ -3,6 +3,10 @@ import { getAllSlugs, getSingleCategory  } from 'utils/hygraph';
 
 export const serverRoutes: ServerRoute[] = [
   {
+    path: 'results',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: '**',
     renderMode: RenderMode.Prerender,
   },
