@@ -1,0 +1,11 @@
+.btn-primary {
+  padding: 1.6rem 3.2rem;
+  line-height: 150%;
+  border-radius: 0.4rem;
+  background-color: var(--pink);
+  color: var(--gray-scale-01);
+  transition: background .3s ease;
+  &:hover {
+    background-color: var(--white);
+  }
+}
